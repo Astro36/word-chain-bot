@@ -1,2 +1,2 @@
-# KoreanDictionary-Crawler
-Korean Dictionary Crawler
+# WordChainerJS
+Korean Word Chainer Bot
