@@ -2,13 +2,13 @@ const fs = require('fs');
 
 const Dictionary = require('./lib/Dictionary');
 const WordChainer = require('./lib/WordChainer');
-const EasyLevelBehavior = require('./lib/level/EasyLevelBehavior');
-const NormalLevelBehavior = require('./lib/level/NormalLevelBehavior');
-const HardLevelBehavior = require('./lib/level/HardLevelBehavior');
-const InsaneLevelBehavior = require('./lib/level/InsaneLevelBehavior');
+const EasyLevel = require('./lib/level/EasyLevel');
+const NormalLevel = require('./lib/level/NormalLevel');
+const HardLevel = require('./lib/level/HardLevel');
+const InsaneLevel = require('./lib/level/InsaneLevel');
 
-const dictionary = new Dictionary('./dictionary/koreans.json');
-const wordChainer = new WordChainer(dictionary, new EasyLevelBehavior());
+const dictionary = new Dictionary('./dictionary/koreans.min.json');
+const wordChainer = new WordChainer(dictionary, new EasyLevel());
 
 const readline = require('readline');
 
@@ -41,7 +41,7 @@ function battleWithMe() {
 }
 
 function showBotsBattle() {
-    const wordChainer2 = new WordChainer(dictionary, new InsaneLevelBehavior());
+    const wordChainer2 = new WordChainer(dictionary, new InsaneLevel());
     const history = [];
 
     let word = '과일';

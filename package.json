@@ -1,6 +1,6 @@
 {
   "name": "word-chainer",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Korean Word Chainer Bot",
   "main": "index.js",
   "scripts": {
@@ -11,12 +11,13 @@
     "url": "git+https://github.com/Astro36/WordChainerJS.git"
   },
   "keywords": [
-    "word-chain"
+    "word-chainer"
   ],
   "author": "Astro36",
   "license": "GPL-3.0",
   "bugs": {
     "url": "https://github.com/Astro36/WordChainerJS/issues"
   },
-  "homepage": "https://github.com/Astro36/WordChainerJS#readme"
+  "homepage": "https://github.com/Astro36/WordChainerJS#readme",
+  "dependencies": {}
 }
