@@ -70,4 +70,4 @@ function showBotsBattle() {
     fs.writeFileSync('output.txt', history.join('\n'));
 }
 
-showBotsBattle();
+battleWithMe();
