@@ -1,4 +1,4 @@
-const WordChainer = require('../lib');
+const WordChainer = require('../lib/WordChainer');
 
 const bot = new WordChainer(new WordChainer.EasyLevel());
 const bot2 = new WordChainer(new WordChainer.NormalLevel());
