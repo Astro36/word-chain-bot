@@ -1,7 +1,8 @@
 # WordChainerJS
-[![GitHub release](https://img.shields.io/github/release/qubyte/rubidium.svg)](https://github.com/Astro36/WordChainerJS)
-[![Github All Releases](https://img.shields.io/github/downloads/atom/atom/total.svg)](https://github.com/Astro36/WordChainerJS)
-[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/Astro36/WordChainerJS/blob/master/LICENSE)
+[![npm](https://img.shields.io/npm/v/word-chainer.svg)](https://github.com/Astro36/WordChainerJS)
+[![npm](https://img.shields.io/npm/dt/word-chainer.svg)](https://github.com/Astro36/WordChainerJS)
+[![npm](https://img.shields.io/npm/l/word-chainer.svg)](https://github.com/Astro36/WordChainerJS)
+
 Korean Word Chainer Bot
 
 ## Install
@@ -52,4 +53,4 @@ r.on('close', function () {
 ## License
 WordChainerJS is licensed under the [GPL 3.0](./LICENSE).
 
-[dp.sql](https://github.com/JJoriping/KKuTu/blob/master/db.sql) for Korean word database is licensed under an [GPL-3.0](https://raw.githubusercontent.com/JJoriping/KKuTu/master/LICENSE.md) by JJoriping.
+[dp.sql](https://github.com/JJoriping/KKuTu/blob/master/db.sql) for Korean word database is licensed under an [GPL-3.0](https://raw.githubusercontent.com/JJoriping/KKuTu/master/LICENSE) by JJoriping.
