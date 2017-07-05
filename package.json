@@ -1,19 +1,24 @@
 {
   "name": "word-chainer",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Korean Word Chainer Bot",
-  "main": "index.js",
+  "main": "lib/WordChainer",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test/bot.test",
+    "test-auto": "node test/bot-auto.test"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Astro36/WordChainerJS.git"
+    "url": "https://github.com/Astro36/WordChainerJS.git"
   },
   "keywords": [
-    "word-chainer"
+    "word-chainer", "korean", "game"
   ],
-  "author": "Astro36",
+  "author": {
+    "name": "Astro36",
+    "email": "astr36@naver.com",
+    "url": "http://astro36.me"
+  },
   "license": "GPL-3.0",
   "bugs": {
     "url": "https://github.com/Astro36/WordChainerJS/issues"
