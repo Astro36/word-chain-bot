@@ -1,6 +1,10 @@
 # Changelog
 
-## Unreleased
+## v0.2.0
+Released July 7, 2017
+
+### Added
+- Add LearningAI function to improve a bot intelligence. The AI will analyse your word pattern.
 
 ## v0.1.1
 Released July 4, 2017
