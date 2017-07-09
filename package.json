@@ -5,7 +5,8 @@
   "main": "lib/WordChainer",
   "scripts": {
     "test": "node test/bot.test",
-    "test-auto": "node test/bot-auto.test"
+    "test-auto": "node test/bot-auto.test",
+    "helper": "node test/helper"
   },
   "repository": {
     "type": "git",
