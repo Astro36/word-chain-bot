@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.3.0
+Released July 10, 2017
+
+### Added
+- Add `Dictionary.getWordScore` method.
+- Add `helper.js` for test.
+
+### Changed
+- Change the algorithm of the rule. Remove the classes and add an enum.
+
 ## v0.2.0
 Released July 7, 2017
 

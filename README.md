@@ -95,7 +95,7 @@ r.on('close', function () {
 ## Custom Rule
 사용자가 임의로 지정할 수 있는 규칙입니다.
 
-### 두음법칙 AllowedInitialRule [Default]
+### 두음법칙 Rule.ALLOWED_INITIAL [Default]
 아래와 같은 두음 법칙을 인정합니다. 단, 역은 성립하지 않습니다.
 - 녀 -> 여
 - 뇨 -> 요
@@ -114,7 +114,7 @@ r.on('close', function () {
 - 루 -> 누
 - 르 -> 느
 
-### 특수단어 추가 AllowedExtraWordRule
+### 특수단어 추가 Rule.ALLOWED_EXTRA
 아래와 같은 주제의 단어를 사용할 수 있습니다.
 - THE iDOLM@STER
 - VOCALOID
@@ -159,7 +159,7 @@ r.on('close', function () {
 - 함대 컬렉션
 - 히어로즈 오브 더 스톰
 
-### 매너 MannerRule
+### 매너 Rule.MANNER
 한방단어와 스택단어(끝 한 글자로 시작하는 단어가 5개 미만인 글자)를 사용할 수 없습니다. 아래와 같은 단어가 스택단어라 볼 수 있습니다.
 - `가뭄`: `뭄바이`, `뭄푸레`
 - `비스킷`: `킷값`, `킷캣`(라면/과자 주제 선택 시)
