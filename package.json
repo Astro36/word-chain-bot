@@ -13,7 +13,9 @@
     "url": "https://github.com/Astro36/WordChainerJS.git"
   },
   "keywords": [
-    "word-chainer", "korean", "game"
+    "word-chainer",
+    "korean",
+    "game"
   ],
   "author": {
     "name": "Astro36",
@@ -25,5 +27,10 @@
     "url": "https://github.com/Astro36/WordChainerJS/issues"
   },
   "homepage": "https://github.com/Astro36/WordChainerJS#readme",
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^11.2.0",
+    "eslint-plugin-import": "^2.2.0"
+  }
 }

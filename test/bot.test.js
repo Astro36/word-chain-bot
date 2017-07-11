@@ -1,33 +1,33 @@
 const WordChainer = require('../lib/WordChainer');
 
-const bot = new WordChainer(new WordChainer.EasyLevel());
+const bot = new WordChainer(WordChainer.EasyLevel);
 
 const readline = require('readline');
 
-let r = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
+const r = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
 });
 
 r.setPrompt('You: ');
 r.prompt();
-r.on('line', function (line) {
-    if (line === 'exit' || line === 'gg') {
-        r.close();
-    }
+r.on('line', (line) => {
+  if (line === 'exit' || line === 'gg') {
+    r.close();
+  }
 
-    try {
-        let next = bot.next(line);
-        console.log('Bot: ' + next);
-        if (next === 'gg') {
-            r.close();
-        }
-    } catch (e) {
-        console.log(e.toString());
+  try {
+    const next = bot.next(line);
+    console.log(`Bot: ${next}`);
+    if (next === 'gg') {
+      r.close();
     }
+  } catch (e) {
+    console.log(e.toString());
+  }
 
-    r.prompt();
+  r.prompt();
 });
-r.on('close', function () {
-    process.exit();
+r.on('close', () => {
+  process.exit();
 });
