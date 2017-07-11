@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.3.1
+Released July 11, 2017
+
+### Fixed
+- Fix a starting word bug.
+
 ## v0.3.0
 Released July 10, 2017
 
