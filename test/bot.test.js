@@ -1,6 +1,6 @@
-const WordChainer = require('../lib/WordChainer');
+const chainer = require('../lib/WordChainer');
 
-const bot = new WordChainer(WordChainer.EasyLevel);
+const bot = new chainer.WordChainer(chainer.EasyLevel);
 
 const readline = require('readline');
 

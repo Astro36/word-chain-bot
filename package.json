@@ -1,12 +1,14 @@
 {
   "name": "word-chainer",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "Korean Word Chainer Bot",
   "main": "lib/WordChainer",
   "scripts": {
+    "build": "babel src -d lib",
+    "lint": "eslint src",
     "test": "node test/bot.test",
     "test-auto": "node test/bot-auto.test",
-    "helper": "node test/helper"
+    "test-helper": "node test/bot-helper.test"
   },
   "repository": {
     "type": "git",
@@ -29,6 +31,10 @@
   "homepage": "https://github.com/Astro36/WordChainerJS#readme",
   "dependencies": {},
   "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-eslint": "^7.2.3",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-stage-2": "^6.24.1",
     "eslint": "^3.19.0",
     "eslint-config-airbnb-base": "^11.2.0",
     "eslint-plugin-import": "^2.2.0"

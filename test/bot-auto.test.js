@@ -1,7 +1,7 @@
-const WordChainer = require('../lib/WordChainer');
+const chainer = require('../lib/WordChainer');
 
-const bot = new WordChainer(WordChainer.EasyLevel, 'testA');
-const bot2 = new WordChainer(WordChainer.NormalLevel, 'testB');
+const bot = new chainer.WordChainer(chainer.EasyLevel, 'testA');
+const bot2 = new chainer.WordChainer(chainer.NormalLevel, 'testB');
 
 const history = [];
 

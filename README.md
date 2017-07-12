@@ -7,6 +7,9 @@ Korean Word Chainer Bot
 
 한국어 끝말잇기 봇
 
+## ChangeLog
+See [CHANGELOG](./CHANGELOG.md)
+
 ## Install
 - Install with npm:
 ``` bash
@@ -17,14 +20,11 @@ npm install word-chainer
 git clone https://github.com/Astro36/WordChainerJS.git
 ```
 
-## ChangeLog
-See [CHANGELOG](./CHANGELOG.md)
-
 ## Usage
 ```javascript
-const WordChainer = require('word-chainer');
+const chainer = require('word-chainer');
 
-const bot = new WordChainer(WordChainer.EasyLevel);
+const bot = new chainer.WordChainer(chainer.EasyLevel);
 
 const readline = require('readline');
 

@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.4.0
+Released July 13, 2017
+
+### Changed
+- ES6 syntax with Babel!
+- Change some API on none-babel code:
+```javascript
+const chainer = require('word-chainer');
+
+const bot = new chainer.WordChainer(chainer.EasyLevel);
+```
+
 ## v0.3.1
 Released July 11, 2017
 
