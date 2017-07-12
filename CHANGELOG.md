@@ -11,6 +11,7 @@ const chainer = require('word-chainer');
 
 const bot = new chainer.WordChainer(chainer.EasyLevel);
 ```
+- Change the command; `npm run test-helper`
 
 ## v0.3.1
 Released July 11, 2017
