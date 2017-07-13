@@ -32,7 +32,7 @@ export default class WordChainer {
     const history = this.history;
 
     // 중복 사용
-    if (history.indexOf(word) >= 0) {
+    if (history.includes(word)) {
       throw new UsedWordException();
     }
 
@@ -40,11 +40,11 @@ export default class WordChainer {
     const startChar = word[0];
     if ((startChar in dictionaryObj) && (word in dictionaryObj[startChar])) {
       // 특수단어
-      if (dictionaryObj[startChar][word].extra.length > 0 && rules.indexOf(Rule.ALLOWED_EXTRA) < 0) {
+      if (dictionaryObj[startChar][word].extra.length > 0 && !rules.includes(Rule.ALLOWED_EXTRA)) {
         throw new NotFoundWordException();
       }
       // 매너
-      if (dictionaryObj[startChar][word].start <= 5 && rules.indexOf(Rule.MANNER) >= 0) {
+      if (dictionaryObj[startChar][word].start <= 5 && rules.includes(Rule.MANNER)) {
         throw new ForbiddenWordException();
       }
     } else {
@@ -58,11 +58,11 @@ export default class WordChainer {
       // 끝말잇기
       const lastWord = history[history.length - 1];
       if (lastWord[lastWord.length - 1] !== word[0]) {
-                // 두음법칙
-        if (rules.indexOf(Rule.ALLOWED_INITIAL) >= 0) {
+        // 두음법칙
+        if (rules.includes(Rule.ALLOWED_INITIAL)) {
           const code = lastWord.charCodeAt(lastWord.length - 1) - 44032;
           const final = code % 28;
-          let temp = String.fromCharCode(((code / 28) * 28) + 44032);
+          let temp = String.fromCharCode(code - final + 44032);
 
           switch (temp) {
             case '녀':
@@ -144,15 +144,15 @@ export default class WordChainer {
 
         for (const i in dictionaryObj) {
           let check = true;
-            // 끝말잇기
+          // 끝말잇기
           const lastWord = history[history.length - 1];
           if (history.length > 0) {
             if (lastWord[lastWord.length - 1] !== i) {
-                // 두음법칙
-              if (rules.indexOf(Rule.ALLOWED_INITIAL) >= 0) {
+              // 두음법칙
+              if (rules.includes(Rule.ALLOWED_INITIAL)) {
                 const code = lastWord.charCodeAt(lastWord.length - 1) - 44032;
                 const final = code % 28;
-                let temp = String.fromCharCode(((code / 28) * 28) + 44032);
+                let temp = String.fromCharCode(code - final + 44032);
 
                 switch (temp) {
                   case '녀':
@@ -240,7 +240,8 @@ export default class WordChainer {
         const nextWordInfo = wordsInfo[0];
 
         if (wordsInfo.length === 0 || nextWordInfo[1] === 0) {
-          learning.setWordWeight(word[0], -10);
+          const lastWord = history[history.length - 2];
+          learning.setWordWeight(lastWord[lastWord.length - 1], -10);
           this.history = [];
           return 'gg';
         }

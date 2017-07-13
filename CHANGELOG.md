@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.4.1
+Released July 14, 2017
+
+### Fixed
+- Fix initial rule bug.
+
 ## v0.4.0
 Released July 13, 2017
 
