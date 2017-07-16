@@ -10,7 +10,7 @@ export default class HardLevel extends Level {
   static getWordScore(word, wordInfo, history) { // Max 1000
     const score = super.getWordScore(word, wordInfo, history);
 
-    if (score > 900) {
+    if (score > 800) {
       return 0;
     }
 

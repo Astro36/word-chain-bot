@@ -10,7 +10,7 @@ export default class NormalLevel extends Level {
   static getWordScore(word, wordInfo, history) { // Max 1000
     let score = super.getWordScore(word, wordInfo, history);
 
-    if (score > 700) {
+    if (score > 650) {
       return 0;
     }
 

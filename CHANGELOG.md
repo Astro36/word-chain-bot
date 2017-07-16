@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.4.2
+Released July 16, 2017
+
+### Changed
+- Ignore case on the command; `GG`, `Gg`, `gg`, etc.
+- More easier bot!
+
 ## v0.4.1
 Released July 14, 2017
 

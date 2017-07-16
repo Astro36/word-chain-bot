@@ -10,7 +10,7 @@ export default class EasyLevel extends Level {
   static getWordScore(word, wordInfo, history) { // Max 1000
     let score = super.getWordScore(word, wordInfo, history);
 
-    if (score > 600) {
+    if (score > 500) {
       return 0;
     }
 

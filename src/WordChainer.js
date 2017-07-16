@@ -250,7 +250,7 @@ export default class WordChainer {
 
         return nextWordInfo[0];
       }
-    } else if (word === 'gg' && history.length >= 1) {
+    } else if (word.toLowerCase() === 'gg' && history.length >= 1) {
       this.learning.setWordWeight(history[history.length - 1], 10);
     }
     return null;
