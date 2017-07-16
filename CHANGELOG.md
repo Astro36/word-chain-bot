@@ -1,7 +1,9 @@
 # Changelog
 
-## v0.4.2
+## v1.0.0
 Released July 16, 2017
+
+Hello World!
 
 ### Changed
 - Ignore case on the command; `GG`, `Gg`, `gg`, etc.
