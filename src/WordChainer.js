@@ -240,8 +240,10 @@ export default class WordChainer {
         const nextWordInfo = wordsInfo[0];
 
         if (wordsInfo.length === 0 || nextWordInfo[1] === 0) {
-          const lastWord = history[history.length - 2];
-          learning.setWordWeight(lastWord[lastWord.length - 1], -10);
+          if (history.length >= 2) {
+            const lastWord = history[history.length - 2];
+            learning.setWordWeight(lastWord[lastWord.length - 1], -10);
+          }
           this.history = [];
           return 'gg';
         }

@@ -1,6 +1,6 @@
 {
   "name": "word-chainer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Korean Word Chainer Bot",
   "main": "lib/WordChainer",
   "scripts": {

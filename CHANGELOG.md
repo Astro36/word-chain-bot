@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.0.1
+Released July 16, 2017
+
+### Fixed
+- Fix a critical bug.
+
 ## v1.0.0
 Released July 16, 2017
 
