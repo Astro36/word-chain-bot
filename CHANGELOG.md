@@ -1,5 +1,12 @@
 # Changelog
 
+## v1.1.0
+Released July 20, 2017
+
+### Changed
+- New dictionary! You can only use noun.
+- Disable the use of the compound word.
+
 ## v1.0.1
 Released July 16, 2017
 

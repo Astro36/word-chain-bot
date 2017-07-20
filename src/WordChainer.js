@@ -40,7 +40,7 @@ export default class WordChainer {
     const startChar = word[0];
     if ((startChar in dictionaryObj) && (word in dictionaryObj[startChar])) {
       // 특수단어
-      if (dictionaryObj[startChar][word].extra.length > 0 && !rules.includes(Rule.ALLOWED_EXTRA)) {
+      if (dictionaryObj[startChar][word].theme.filter(element => ['THE iDOLM@STER', 'VOCALOID', '개구리 중사 케로로', '국내 방송 프로그램', '니세코이', '대한민국 철도역', '도타 2', '듀라라라!!', '디지몬', '라면/과자', '러브 라이브!', '리그 오브 레전드', '마법소녀 리리컬 나노하', '마법소녀 마도카☆마기카', '메이플스토리', '메카쿠시티 액터즈', '모노가타리 시리즈', '모바일 게임', '빙과', '사이퍼즈', '스즈미야 하루히', '스타크래프트', '신조어', '아지랑이 프로젝트', '앙상블 스타즈!', '엘소드', '오레이모', '오버워치', '온라인 게임', '외국 영화', '월드 오브 워크래프트', '유루유리', '유명인', '라이트 노벨', '만화/애니메이션', '젤다의 전설', '포켓몬스터', '하이큐!!', '하스스톤', '한국 영화', '함대 컬렉션', '히어로즈 오브 더 스톰'].includes(element)).length > 0 && !rules.includes(Rule.ALLOWED_EXTRA)) {
         throw new NotFoundWordException();
       }
       // 매너

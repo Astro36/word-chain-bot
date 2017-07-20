@@ -5,7 +5,7 @@ let instance;
 
 export default class Dictionary {
   constructor() {
-    this.dictionaryObj = JSON.parse(fs.readFileSync(path.join(__dirname, '../dictionary/koreans.min.json'), 'utf8'));
+    this.dictionaryObj = JSON.parse(fs.readFileSync(path.join(__dirname, '../dictionary/koreans_noun.min.json'), 'utf8'));
   }
 
   static getInstance() {
