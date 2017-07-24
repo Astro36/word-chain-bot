@@ -1,4 +1,6 @@
 import Dictionary from './Dictionary';
+import DictionaryAnalyzer from './DictionaryAnalyzer';
+import Utils from './Utils';
 import LearningAI from './ai/LearningAI';
 import WordException from './exception/WordException';
 import ForbiddenWordException from './exception/ForbiddenWordException';
@@ -14,7 +16,7 @@ import Rule from './rule/Rule';
 
 export default class WordChainer {
   constructor(level, name = 'test', rules = [Rule.ALLOWED_INITIAL]) {
-    this.dictionary = Dictionary.getInstance();
+    this.dictionary = Dictionary.getInstance(rules);
     this.learning = new LearningAI(name);
     this.level = level;
     this.name = name;
@@ -60,62 +62,7 @@ export default class WordChainer {
       if (lastWord[lastWord.length - 1] !== word[0]) {
         // 두음법칙
         if (rules.includes(Rule.ALLOWED_INITIAL)) {
-          const code = lastWord.charCodeAt(lastWord.length - 1) - 44032;
-          const final = code % 28;
-          let temp = String.fromCharCode(code - final + 44032);
-
-          switch (temp) {
-            case '녀':
-              temp = '여';
-              break;
-            case '뇨':
-              temp = '요';
-              break;
-            case '뉴':
-              temp = '유';
-              break;
-            case '니':
-              temp = '이';
-              break;
-            case '랴':
-              temp = '야';
-              break;
-            case '려':
-              temp = '여';
-              break;
-            case '례':
-              temp = '예';
-              break;
-            case '료':
-              temp = '요';
-              break;
-            case '류':
-              temp = '유';
-              break;
-            case '리':
-              temp = '이';
-              break;
-            case '라':
-              temp = '나';
-              break;
-            case '래':
-              temp = '내';
-              break;
-            case '로':
-              temp = '노';
-              break;
-            case '뢰':
-              temp = '뇌';
-              break;
-            case '루':
-              temp = '누';
-              break;
-            case '르':
-              temp = '느';
-              break;
-          }
-
-          if (String.fromCharCode(temp.charCodeAt(0) + final) !== word[0]) {
+          if (Utils.convertInitialSound(lastWord[lastWord.length - 1]) !== word[0]) {
             throw new InvalidWordException();
           }
         } else {
@@ -150,62 +97,7 @@ export default class WordChainer {
             if (lastWord[lastWord.length - 1] !== i) {
               // 두음법칙
               if (rules.includes(Rule.ALLOWED_INITIAL)) {
-                const code = lastWord.charCodeAt(lastWord.length - 1) - 44032;
-                const final = code % 28;
-                let temp = String.fromCharCode(code - final + 44032);
-
-                switch (temp) {
-                  case '녀':
-                    temp = '여';
-                    break;
-                  case '뇨':
-                    temp = '요';
-                    break;
-                  case '뉴':
-                    temp = '유';
-                    break;
-                  case '니':
-                    temp = '이';
-                    break;
-                  case '랴':
-                    temp = '야';
-                    break;
-                  case '려':
-                    temp = '여';
-                    break;
-                  case '례':
-                    temp = '예';
-                    break;
-                  case '료':
-                    temp = '요';
-                    break;
-                  case '류':
-                    temp = '유';
-                    break;
-                  case '리':
-                    temp = '이';
-                    break;
-                  case '라':
-                    temp = '나';
-                    break;
-                  case '래':
-                    temp = '내';
-                    break;
-                  case '로':
-                    temp = '노';
-                    break;
-                  case '뢰':
-                    temp = '뇌';
-                    break;
-                  case '루':
-                    temp = '누';
-                    break;
-                  case '르':
-                    temp = '느';
-                    break;
-                }
-
-                if (String.fromCharCode(temp.charCodeAt(0) + final) !== i) {
+                if (Utils.convertInitialSound(lastWord[lastWord.length - 1]) !== i) {
                   check = false;
                 }
               } else {
@@ -259,4 +151,4 @@ export default class WordChainer {
   }
 }
 
-export { WordChainer, Dictionary, LearningAI, WordException, ForbiddenWordException, InvalidWordException, NotFoundWordException, UsedWordException, Level, EasyLevel, NormalLevel, HardLevel, InsaneLevel, Rule };
+export { WordChainer, Dictionary, DictionaryAnalyzer, Utils, LearningAI, WordException, ForbiddenWordException, InvalidWordException, NotFoundWordException, UsedWordException, Level, EasyLevel, NormalLevel, HardLevel, InsaneLevel, Rule };

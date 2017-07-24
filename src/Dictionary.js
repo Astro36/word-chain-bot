@@ -1,18 +1,22 @@
 import fs from 'fs';
 import path from 'path';
+import DictionaryAnalyzer from './DictionaryAnalyzer';
+import Rule from './rule/Rule';
 
-let instance;
+const instances = {};
 
 export default class Dictionary {
-  constructor() {
-    this.dictionaryObj = JSON.parse(fs.readFileSync(path.join(__dirname, '../dictionary/koreans_noun.min.json'), 'utf8'));
+  constructor(rules = [Rule.ALLOWED_INITIAL]) {
+    this.dictionaryObj = new DictionaryAnalyzer(JSON.parse(fs.readFileSync(path.join(__dirname, '../dictionary/koreans_noun.min.json'), 'utf8'))).run(rules);
   }
 
-  static getInstance() {
-    if (!instance) {
-      return (instance = new Dictionary());
+  static getInstance(rules = [Rule.ALLOWED_INITIAL]) {
+    const key = rules.sort().join('');
+    if (key in instances) {
+      return instances[key];
     }
-    return instance;
+    instances[key] = new Dictionary(rules);
+    return instances[key];
   }
 
   getDictionaryObject() {
