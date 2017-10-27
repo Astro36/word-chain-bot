@@ -2,7 +2,7 @@
 
 > Korean Word Chainer Bot
 
-[![npm](https://img.shields.io/npm/v/word-chainer.svg)](https://www.npmjs.com/package/word-chainer) [![npm](https://img.shields.io/npm/dt/word-chainer.svg)](https://www.npmjs.com/package/word-chainer)
+[![npm](https://img.shields.io/npm/v/word-chainer.svg?style=flat-square)](https://www.npmjs.com/package/word-chainer) [![npm](https://img.shields.io/npm/dt/word-chainer.svg?style=flat-square)](https://www.npmjs.com/package/word-chainer)
 
 한국어 끝말잇기 봇
 
