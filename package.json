@@ -28,6 +28,7 @@
   "homepage": "https://github.com/Astro36/WordChainerJS#readme",
   "dependencies": {
     "jsdom": "^11.5.1",
+    "korean-dictionary": "file:../KoreanDictionary",
     "request": "^2.83.0"
   },
   "devDependencies": {
