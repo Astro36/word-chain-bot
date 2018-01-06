@@ -85,6 +85,8 @@ const { WordChainBot } = require('../lib');
 
 이 규칙은 참가자와 봇 모두에게 기본적으로 적용되는 규칙입니다.
 
+모든 규칙은 표준국어대사전 기준으로 작성되었습니다.
+
 ### 개요
 
 앞 참가자가 입력한 단어의 마지막 글자로 시작하는 단어를 입력합니다. 차례는 한 사람이 패배할 때까지 반복됩니다. 자신의 차례에 단어를 입력하지 못하면 패배합니다.
@@ -96,6 +98,15 @@ const { WordChainBot } = require('../lib');
 ### 사용 가능 단어
 
 단어는 2글자 이상이어야 하며, 가~힣 사이의 글자 중 하나여야 합니다.
+
+표준국어대사전의 표제어 중 띄어 쓰지 않아도 되는 표제어를 사용할 수 있으며, 모든 단어는 띄어 쓰지 않음을 원칙으로 합니다.
+
+#### 사용 가능 단어 예시
+
+- `큰아버지`: 큰-아버지
+- `보일샤를의법칙`: 보일ㆍ샤를의^법칙
+
+표제어의 기호가 궁금하시다면, [이곳](http://stdweb2.korean.go.kr/guide/symbol.jsp)을 방문해 주세요.
 
 ### 두음법칙
 
@@ -124,9 +135,16 @@ const { WordChainBot } = require('../lib');
 
 명사만 사용할 수 있습니다.
 
-### 전문어
+### 전문어 금지 OnlyThemeRule
 
 특정 전문어 이외의 다른 단어의 사용을 금지합니다.
+
+```javascript
+const { OnlyThemeRule, WordChainBot } = require('word-chain-bot');
+const bot = new WordChainBot('data/dictionary.sqlite3');
+bot.addRule(new OnlyThemeRule(['물리', '화학'])); // 물리, 화학 이외의 전문어 사용을 금지합니다.
+await bot.init();
+```
 
 - 가톨릭
 - 민속
@@ -182,18 +200,11 @@ const { WordChainBot } = require('../lib');
 - 미술
 - 음악
 
-```javascript
-const { OnlyThemeRule, WordChainBot } = require('word-chain-bot');
-const bot = new WordChainBot('data/dictionary.sqlite3');
-bot.addRule(new OnlyThemeRule(['물리', '화학'])); // 물리, 화학 이외의 전문어 사용을 금지합니다.
-await bot.init();
-```
-
 ## Level
 
 봇의 난이도에 대한 설명입니다. 모든 사용자 규칙을 적용했을 때를 기준으로 합니다.
 
-### Easy
+### Easy [Default]
 
 쉬움 난이도입니다. 한방단어를 사용하지 않습니다. 반격하기 쉬운 단어를 사용합니다.
 
