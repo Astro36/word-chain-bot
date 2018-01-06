@@ -1,7 +1,7 @@
 {
-  "name": "word-chainer",
-  "version": "2.0.0",
-  "description": "Korean Word Chainer Bot",
+  "name": "word-chain-bot",
+  "version": "0.1.0",
+  "description": "Korean Word Chain Bot",
   "main": "lib/index.js",
   "scripts": {
     "lint": "eslint lib",
@@ -9,9 +9,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Astro36/WordChainerJS.git"
+    "url": "https://github.com/Astro36/WordChainBot.git"
   },
   "keywords": [
+    "word-chain",
     "word-chainer",
     "korean",
     "game"
@@ -23,16 +24,16 @@
   },
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/Astro36/WordChainerJS/issues"
+    "url": "https://github.com/Astro36/WordChainBot/issues"
   },
-  "homepage": "https://github.com/Astro36/WordChainerJS#readme",
+  "homepage": "https://github.com/Astro36/WordChainBot#readme",
   "dependencies": {
     "jsdom": "^11.5.1",
     "korean-dictionary": "file:../KoreanDictionary",
     "request": "^2.83.0"
   },
   "devDependencies": {
-    "eslint": "^4.13.0",
+    "eslint": "^4.14.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.8.0"
   }
