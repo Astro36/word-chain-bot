@@ -4,8 +4,8 @@
   "description": "Korean Word Chain Bot",
   "main": "lib/index.js",
   "scripts": {
-    "lint": "eslint lib",
-    "lint-fix": "eslint lib --fix"
+    "lint": "eslint lib test",
+    "lint-fix": "eslint lib test --fix"
   },
   "repository": {
     "type": "git",
