@@ -131,18 +131,14 @@ const { WordChainBot } = require('../lib');
 
 ## Custom Rule
 
-### 명사만 사용 OnlyNounRule [Default]
+### 전문어 금지 AllowedCategoryRule
 
-명사만 사용할 수 있습니다.
-
-### 전문어 금지 OnlyThemeRule
-
-특정 전문어 이외의 다른 단어의 사용을 금지합니다.
+특정 전문어 이외의 단어의 사용을 금지합니다.
 
 ```javascript
-const { OnlyThemeRule, WordChainBot } = require('word-chain-bot');
+const { AllowedCategoryRule, WordChainBot } = require('word-chain-bot');
 const bot = new WordChainBot('data/dictionary.sqlite3');
-bot.addRule(new OnlyThemeRule(['물리', '화학'])); // 물리, 화학 이외의 전문어 사용을 금지합니다.
+bot.addRule(new AllowedCategoryRule('물리', '화학')); // 전문어가 아닌 단어와 물리, 화학 전문어만 사용할 수 있습니다.
 await bot.init();
 ```
 
@@ -199,6 +195,28 @@ await bot.init();
 - 화학
 - 미술
 - 음악
+
+### 특정 품사 금지 AllowedPOSRule [Default="명사"]
+
+특정 품사 이외의 단어 사용을 금지합니다. 기본값으로는 명사만 사용할 수 있습니다.
+
+```javascript
+const { AllowedPOSRule, WordChainBot } = require('word-chain-bot');
+const bot = new WordChainBot('data/dictionary.sqlite3');
+bot.setRules([new AllowedPOSRule('명사')]); // 명사만 사용할 수 있습니다.
+await bot.init();
+```
+
+### 방언, 옛말, 북한어 금지 AllowedTypeRule [Default]
+
+특정 종류 이외의 단어 사용을 금지합니다. 기본값으로는 방언, 옛말, 북한어 모두 사용할 수 없습니다.
+
+```javascript
+const { AllowedTypeRule, WordChainBot } = require('word-chain-bot');
+const bot = new WordChainBot('data/dictionary.sqlite3');
+bot.setRules([new AllowedTypeRule('방언', '옛말')]); // 표준어와 방언, 옛말만 사용할 수 있습니다.
+await bot.init();
+```
 
 ## Level
 

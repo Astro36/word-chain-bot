@@ -23,6 +23,7 @@ const { WordChainBot } = require('../lib');
   const bot = new WordChainBot(path.join(__dirname, '../data/dictionary.sqlite3'));
   console.log('사전을 분석하는 중입니다.');
   await bot.init();
+  bot.dictionaryAnalyzer.saveAsFile('dictionary_analyzer.json');
 
   const r = readline.createInterface({
     input: process.stdin,
