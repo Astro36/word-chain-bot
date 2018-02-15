@@ -17,13 +17,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>. */
 const path = require('path');
 const readline = require('readline');
 
-const { WordChainBot } = require('../lib');
+const { ConsoleWordChainBot } = require('../lib');
 
 (async () => {
-  const bot = new WordChainBot(path.join(__dirname, '../data/dictionary.sqlite3'));
+  const bot = new ConsoleWordChainBot(path.join(__dirname, '../data/dictionary.sqlite3'));
   console.log('사전을 분석하는 중입니다.');
   await bot.init();
-  bot.dictionaryAnalyzer.saveAsFile(path.join(__dirname, '../data/dictionary_analyzer.json'));
 
   const r = readline.createInterface({
     input: process.stdin,
