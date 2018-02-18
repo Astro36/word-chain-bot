@@ -108,37 +108,16 @@ const { WordChainBot } = require('../lib');
 
 표제어의 기호가 궁금하시다면, [이곳](http://stdweb2.korean.go.kr/guide/symbol.jsp)을 방문해 주세요.
 
-### 두음법칙
-
-아래와 같은 두음 법칙을 인정합니다. 단, 역은 성립하지 않습니다.
-
-- 녀 -> 여
-- 뇨 -> 요
-- 뉴 -> 유
-- 니 -> 이
-- 랴 -> 야
-- 려 -> 여
-- 례 -> 예
-- 료 -> 요
-- 류 -> 유
-- 리 -> 이
-- 라 -> 나
-- 래 -> 내
-- 로 -> 노
-- 뢰 -> 뇌
-- 루 -> 누
-- 르 -> 느
-
 ## Custom Rule
 
-### 전문어 금지 AllowedCategoryRule
+### 특정 전문어만 허용 AllowedCategoryRule
 
 특정 전문어 이외의 단어의 사용을 금지합니다.
 
 ```javascript
 const { AllowedCategoryRule, WordChainBot } = require('word-chain-bot');
 const bot = new WordChainBot('data/dictionary.sqlite3');
-bot.addRule(new AllowedCategoryRule('물리', '화학')); // 전문어가 아닌 단어와 물리, 화학 전문어만 사용할 수 있습니다.
+bot.getRuleManager().add(new AllowedCategoryRule('물리', '화학')); // 전문어가 아닌 단어와 물리, 화학 전문어만 사용할 수 있습니다.
 await bot.init();
 ```
 
@@ -196,25 +175,70 @@ await bot.init();
 - 미술
 - 음악
 
-### 특정 품사 금지 AllowedPOSRule [Default="명사"]
+### 특정 품사만 허용 AllowedPOSRule [Default="명사"]
 
 특정 품사 이외의 단어 사용을 금지합니다. 기본값으로는 명사만 사용할 수 있습니다.
 
 ```javascript
 const { AllowedPOSRule, WordChainBot } = require('word-chain-bot');
 const bot = new WordChainBot('data/dictionary.sqlite3');
-bot.setRules([new AllowedPOSRule('명사')]); // 명사만 사용할 수 있습니다.
+bot.getRuleManager().set([new AllowedPOSRule('명사')]); // 명사만 사용할 수 있습니다.
 await bot.init();
 ```
 
-### 방언, 옛말, 북한어 금지 AllowedTypeRule [Default]
+### 방언, 옛말, 북한어 허용 AllowedTypeRule [Default="표준어"]
 
 특정 종류 이외의 단어 사용을 금지합니다. 기본값으로는 방언, 옛말, 북한어 모두 사용할 수 없습니다.
 
 ```javascript
 const { AllowedTypeRule, WordChainBot } = require('word-chain-bot');
 const bot = new WordChainBot('data/dictionary.sqlite3');
-bot.setRules([new AllowedTypeRule('방언', '옛말')]); // 표준어와 방언, 옛말만 사용할 수 있습니다.
+bot.getRuleManager().set([new AllowedTypeRule('방언', '옛말')]); // 표준어와 방언, 옛말만 사용할 수 있습니다.
+await bot.init();
+```
+
+- 방언
+- 옛말
+- 북한어
+
+### 두음법칙 적용 InitialSoundRule [Default]
+
+아래와 같은 두음 법칙을 인정합니다. 단, 역은 성립하지 않습니다.
+
+```javascript
+const { InitialSoundRule, WordChainBot } = require('word-chain-bot');
+const bot = new WordChainBot('data/dictionary.sqlite3');
+bot.getRuleManager().set([new InitialSoundRule()]);
+await bot.init();
+```
+
+- 녀 -> 여
+- 뇨 -> 요
+- 뉴 -> 유
+- 니 -> 이
+- 랴 -> 야
+- 려 -> 여
+- 례 -> 예
+- 료 -> 요
+- 류 -> 유
+- 리 -> 이
+- 라 -> 나
+- 래 -> 내
+- 로 -> 노
+- 뢰 -> 뇌
+- 루 -> 누
+- 르 -> 느
+
+### 특정 단어 자주 사용 ScoreWordRule
+
+특정 단어를 자주 사용하거나 덜 사용하게 할 수 있습니다. 단어의 점수가 클수록 강한 단어로 인식합니다. `bonusScore`의 기본값은 1 입니다.
+
+```javascript
+const { ScoreWordRule, WordChainBot } = require('word-chain-bot');
+const bot = new WordChainBot('data/dictionary.sqlite3');
+bot.getRuleManager().add(new ScoreWordRule({ pos: '명사', category: '물리' })); // 품사가 명사인 물리 전문어를 자주 사용합니다.
+bot.getRuleManager().add(new ScoreWordRule({ regex: /각/ }, 2)); // "각"이 포함된 단어를 자주 사용합니다.
+bot.getRuleManager().add(new ScoreWordRule({ category: '문학' }, -1)); // 문학 전문어를 덜 사용합니다.
 await bot.init();
 ```
 

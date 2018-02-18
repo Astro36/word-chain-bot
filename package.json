@@ -29,11 +29,11 @@
   "homepage": "https://github.com/Astro36/WordChainBot#readme",
   "dependencies": {
     "jsdom": "^11.6.2",
-    "korean-dictionary": "file:../KoreanDictionary",
+    "korean-dictionary": "^0.1.0",
     "request": "^2.83.0"
   },
   "devDependencies": {
-    "eslint": "^4.17.0",
+    "eslint": "^4.18.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.8.0"
   }
