@@ -28,17 +28,17 @@ git clone https://github.com/Astro36/WordChainBot.git
 
 ### Notice
 
-**반드시 `data/`에 사전 DB를 넣어주세요.**
+**예제를 사용하기 위해서는 반드시 `./data/`에 사전 DB를 넣어주세요.**
 
 사전 DB는 아래와 같은 방법으로 크롤링 할 수 있습니다.
 
-``` bash
-npm install korean-dictionary --save
+```bash
+npm install korean-dictionary
 ```
 
 ```javascript
 const { KoreanDictionary } = require('korean-dictionary');
-const dictionary = new KoreanDictionary('data/dictionary.sqlite3');
+const dictionary = new KoreanDictionary('./data/dictionary.sqlite3');
 await dictionary.fetch();
 ```
 
@@ -50,7 +50,7 @@ const readline = require('readline');
 const { WordChainBot } = require('../lib');
 
 (async () => {
-  const bot = new WordChainBot('data/dictionary.sqlite3');
+  const bot = new WordChainBot('./data/dictionary.sqlite3');
   console.log('사전을 분석하는 중입니다.');
   await bot.init();
 
@@ -116,7 +116,7 @@ const { WordChainBot } = require('../lib');
 
 ```javascript
 const { AllowedCategoryRule, WordChainBot } = require('word-chain-bot');
-const bot = new WordChainBot('data/dictionary.sqlite3');
+const bot = new WordChainBot('./data/dictionary.sqlite3');
 bot.getRuleManager().add(new AllowedCategoryRule('물리', '화학')); // 전문어가 아닌 단어와 물리, 화학 전문어만 사용할 수 있습니다.
 await bot.init();
 ```
@@ -181,7 +181,7 @@ await bot.init();
 
 ```javascript
 const { AllowedPOSRule, WordChainBot } = require('word-chain-bot');
-const bot = new WordChainBot('data/dictionary.sqlite3');
+const bot = new WordChainBot('./data/dictionary.sqlite3');
 bot.getRuleManager().set([new AllowedPOSRule('명사')]); // 명사만 사용할 수 있습니다.
 await bot.init();
 ```
@@ -192,7 +192,7 @@ await bot.init();
 
 ```javascript
 const { AllowedTypeRule, WordChainBot } = require('word-chain-bot');
-const bot = new WordChainBot('data/dictionary.sqlite3');
+const bot = new WordChainBot('./data/dictionary.sqlite3');
 bot.getRuleManager().set([new AllowedTypeRule('방언', '옛말')]); // 표준어와 방언, 옛말만 사용할 수 있습니다.
 await bot.init();
 ```
@@ -207,7 +207,7 @@ await bot.init();
 
 ```javascript
 const { InitialSoundRule, WordChainBot } = require('word-chain-bot');
-const bot = new WordChainBot('data/dictionary.sqlite3');
+const bot = new WordChainBot('./data/dictionary.sqlite3');
 bot.getRuleManager().set([new InitialSoundRule()]);
 await bot.init();
 ```
@@ -229,16 +229,60 @@ await bot.init();
 - 루 -> 누
 - 르 -> 느
 
+### 단어의 최대 글자수 설정 MaxTextLengthRule
+
+단어의 최대 글자수를 설정할 수 있습니다.
+
+```javascript
+const { MaxTextLengthRule, WordChainBot } = require('word-chain-bot');
+const bot = new WordChainBot('./data/dictionary.sqlite3');
+bot.getRuleManager().add(new MaxTextLengthRule(5)); // 최대 5글자 단어를 사용할 수 있습니다.
+await bot.init();
+```
+
+### 단어의 최소 글자수 설정 MaxTextLengthRule
+
+단어의 최소 글자수를 설정할 수 있습니다. 단어의 최소 글자수는 2이상이여야 합니다.
+
+```javascript
+const { MinTextLengthRule, WordChainBot } = require('word-chain-bot');
+const bot = new WordChainBot('./data/dictionary.sqlite3');
+bot.getRuleManager().add(new MinTextLengthRule(2)); // 최소 2글자 단어를 사용할 수 있습니다.
+await bot.init();
+```
+
 ### 특정 단어 자주 사용 ScoreWordRule
 
 특정 단어를 자주 사용하거나 덜 사용하게 할 수 있습니다. 단어의 점수가 클수록 강한 단어로 인식합니다. `bonusScore`의 기본값은 1 입니다.
 
 ```javascript
 const { ScoreWordRule, WordChainBot } = require('word-chain-bot');
-const bot = new WordChainBot('data/dictionary.sqlite3');
+const bot = new WordChainBot('./data/dictionary.sqlite3');
 bot.getRuleManager().add(new ScoreWordRule({ pos: '명사', category: '물리' })); // 품사가 명사인 물리 전문어를 자주 사용합니다.
-bot.getRuleManager().add(new ScoreWordRule({ regex: /각/ }, 2)); // "각"이 포함된 단어를 자주 사용합니다.
+bot.getRuleManager().add(new ScoreWordRule({ regex: /각/ }, 2)); // "각"이 포함된 단어를 매우 자주 사용합니다.
 bot.getRuleManager().add(new ScoreWordRule({ category: '문학' }, -1)); // 문학 전문어를 덜 사용합니다.
+await bot.init();
+```
+
+### 단어의 글자수 설정 TextLengthRule
+
+단어의 글자수를 설정할 수 있습니다. 단어의 글자수는 2이상이여야 합니다.
+
+```javascript
+const { TextLengthRule, WordChainBot } = require('word-chain-bot');
+const bot = new WordChainBot('./data/dictionary.sqlite3');
+bot.getRuleManager().add(new TextLengthRule(3)); // 3글자 단어만 사용할 수 있습니다.
+await bot.init();
+```
+
+### 정규식을 만족하는 단어만 사용 TextRegExpRule
+
+정규식을 만족하는 단어만을 사용할 수 있습니다.
+
+```javascript
+const { TextRegExpRule, WordChainBot } = require('word-chain-bot');
+const bot = new WordChainBot('./data/dictionary.sqlite3');
+bot.getRuleManager().add(new TextRegExpRule(/^(.+)$1$/)); // 정규식을 만족하는 단어만 사용할 수 있습니다.
 await bot.init();
 ```
 
