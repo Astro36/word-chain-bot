@@ -14,13 +14,15 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>. */
 
+const { KoreanDictionary } = require('korean-dictionary');
 const path = require('path');
 const readline = require('readline');
 
 const { ConsoleWordChainBot } = require('../lib');
 
 (async () => {
-  const bot = new ConsoleWordChainBot(path.join(__dirname, '../data/dictionary.sqlite3'));
+  const dictionary = new KoreanDictionary(path.join(__dirname, '../data/dictionary.sqlite3'));
+  const bot = new ConsoleWordChainBot(dictionary);
   console.log('사전을 분석하는 중입니다.');
   await bot.init();
 
