@@ -25,6 +25,7 @@ const { ConsoleWordChainBot } = require('../lib');
   const bot = new ConsoleWordChainBot(dictionary);
   console.log('사전을 분석하는 중입니다.');
   await bot.init();
+  console.log('게임을 시작합니다.');
 
   const r = readline.createInterface({
     input: process.stdin,
@@ -36,15 +37,13 @@ const { ConsoleWordChainBot } = require('../lib');
   r.on('line', async (line) => {
     if (line === 'exit' || line === 'gg') {
       r.close();
-    }
-
-    const next = await bot.next(line);
-    if (next === '승리!') {
-      r.close();
     } else {
+      const next = bot.next(line);
       console.log(`Bot: ${next}`);
+      if (next === '승리!') {
+        r.close();
+      }
     }
-
     r.prompt();
   });
   r.on('close', () => {
